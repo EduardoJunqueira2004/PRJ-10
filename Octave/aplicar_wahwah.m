@@ -30,5 +30,7 @@ function sinal_processado = aplicar_wahwah(sinal, fa, parametros, largura_banda)
     for i = 1:size(sinal, 2)
         sinal_processado(:, i) = filtro_passe_banda(sinal(:, i), fa, f, f_corte_inf, f_corte_sup);
     end
+    % Normalizar o sinal processado
+    sinal_processado = normalize(sinal_processado, 'range');
 end
 
