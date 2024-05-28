@@ -8,15 +8,15 @@ clc; clear all; close all;
 %-.------------------------------------------------------------
 %main:
 % Solicitar o número do áudio desejado ao utilizador
-numero_audio = input('Escolha o número do áudio (1, 2,3,4,5,6,7,8,9,10): ');
+numero_audio = input('Escolha o número do áudio (1, 2,3,4,5,6,7,8,9,10,11,12): ');
 
 % Verificar se o número de áudio está dentro do intervalo esperado
-while numero_audio < 1 || numero_audio > 10
+while numero_audio < 1 || numero_audio > 12
     % Exibir uma mensagem de erro
-    disp('Número de áudio inválido. Escolha 1, 2,3,4,5,6,7,8,9,10.');
+    disp('Número de áudio inválido. Escolha 1, 2,3,4,5,6,7,8,9,10,11,12.');
 
     % Solicitar novamente o número do áudio ao utilizador
-    numero_audio = input('Escolha o número do áudio (1, 2,3,4,5,6,7,8,9,10): ');
+    numero_audio = input('Escolha o número do áudio (1, 2,3,4,5,6,7,8,9,10,11,12): ');
 end
 % Carregar o sinal de áudio com base na escolha do utilizador
 if numero_audio == 1
@@ -24,7 +24,7 @@ if numero_audio == 1
 elseif numero_audio == 2
     [sinal, fa] = audioread('audio2.wav');
 elseif numero_audio == 3
-    [sinal, fa] = audioread('audio3.wav');
+    [sinal, fa] = audioread('audio3.wav');10
 elseif numero_audio == 4
     [sinal, fa] = audioread('audio_sala_s1.4.1.wav');
 elseif numero_audio == 5
@@ -39,6 +39,10 @@ elseif numero_audio == 9
     [sinal, fa] = audioread('audio_sr3.1.2.wav');
 elseif numero_audio == 10
     [sinal, fa] = audioread('Arctic Monkeys - Whyd You Only Call Me When Youre High.wav');
+elseif numero_audio == 11
+    [sinal, fa] = audioread('WC_1.wav');
+elseif numero_audio == 12
+    [sinal, fa] = audioread('WC_2.wav');
 
 end
 
