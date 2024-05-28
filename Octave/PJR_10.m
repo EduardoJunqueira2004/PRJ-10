@@ -8,47 +8,74 @@ clc; clear all; close all;
 %-.------------------------------------------------------------
 %main:
 % Solicitar o número do áudio desejado ao utilizador
-numero_audio = input('Escolha o número do áudio (1, 2,3,4,5,6,7,8,9,10,11,12): ');
+numero_audio = input('Escolha o número do áudio (1, 2): ');
 
 % Verificar se o número de áudio está dentro do intervalo esperado
-while numero_audio < 1 || numero_audio > 12
+while numero_audio < 1 || numero_audio > 2
     % Exibir uma mensagem de erro
-    disp('Número de áudio inválido. Escolha 1, 2,3,4,5,6,7,8,9,10,11,12.');
+    disp('Número de áudio inválido. Escolha 1, 2');
 
     % Solicitar novamente o número do áudio ao utilizador
-    numero_audio = input('Escolha o número do áudio (1, 2,3,4,5,6,7,8,9,10,11,12): ');
+    numero_audio = input('Escolha o número do áudio (1, 2): ');
 end
 % Carregar o sinal de áudio com base na escolha do utilizador
 if numero_audio == 1
-    [sinal, fa] = audioread('audio1.wav');
+    [sinal, fa] = audioread('Input.wav');
 elseif numero_audio == 2
-    [sinal, fa] = audioread('audio2.wav');
-elseif numero_audio == 3
-    [sinal, fa] = audioread('audio3.wav');10
-elseif numero_audio == 4
-    [sinal, fa] = audioread('audio_sala_s1.4.1.wav');
-elseif numero_audio == 5
-    [sinal, fa] = audioread('audio_sala_s1.4.2.wav');
-elseif numero_audio == 6
-    [sinal, fa] = audioread('audio_sala_s1.4.3.wav');
-elseif numero_audio == 7
-    [sinal, fa] = audioread('audio_sala_s1.4.4.wav');
-elseif numero_audio == 8
-    [sinal, fa] = audioread('audio_sr3.1.1.wav');
-elseif numero_audio == 9
-    [sinal, fa] = audioread('audio_sr3.1.2.wav');
-elseif numero_audio == 10
     [sinal, fa] = audioread('Arctic Monkeys - Whyd You Only Call Me When Youre High.wav');
-elseif numero_audio == 11
-    [sinal, fa] = audioread('WC_1.wav');
-elseif numero_audio == 12
-    [sinal, fa] = audioread('WC_2.wav');
-
 end
 
+
+% Reproduzir o áudio original
 sound(sinal, fa);
+
+
 % Solicitar a escolha de efeito ao utilizador
 escolha = input('Escolha o efeito desejado (1 para Wahwah, 2 para Tremolo, 3 para Reverb): ');
+
+
+% Loop para escolher e carregar impulso
+while true
+    % Exibir o menu de impulsos
+    disp('Escolha o impulso desejado:');
+    disp('1: Impulso 1 - Sala 1.4 som 1');
+    disp('2: Impulso 2 - Sala 1.4 som 2');
+    disp('3: Impulso 3 - Sala de Redes SR3.1.2');
+    disp('4: Impulso 4 - WC 1');
+    disp('5: Impulso 5 - WC 2');
+    disp('0: Sair');
+
+    % Solicitar a escolha de impulso ao utilizador
+    escolha_impulso = input('Digite o número correspondente ao impulso desejado: ');
+
+    % Verificar se o utilizador escolheu sair
+    if escolha_impulso == 0
+        disp('Saindo da escolha de impulso...');
+        break;
+    end
+
+    % Verificar se o impulso está dentro do intervalo esperado
+    if escolha_impulso >= 1 && escolha_impulso <= 5
+        % Carregar o impulso selecionado
+        switch escolha_impulso
+            case 1
+                impulso = audioread('impulso_sala_1.4.2.wav');
+            case 2
+                impulso = audioread('iimpulso_sala1.4.3.wav');
+            case 3
+                impulso = audioread('impulso_sala_sr3.1.2.wav');
+            case 4
+                impulso = audioread('WC_1.wav');
+            case 5
+                impulso = audioread('WC_2.wav');
+        end
+        disp('Impulso carregado com sucesso.');
+        break; % Sair do loop após a escolha válida
+    else
+        % Exibir uma mensagem de erro
+        disp('Número de impulso inválido. Escolha 1, 2, 3, 4, 5 ou 0 para sair.');
+    end
+end
 
 parametros = [0.5, 1]; %é a frequência central (1000 Hz) e o segundo elemento é a largura da banda de passagem (500 Hz).
 
