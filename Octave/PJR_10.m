@@ -32,8 +32,17 @@ sound(sinal, fa);
 % Solicitar a escolha de efeito ao utilizador
 escolha_efeito = input('Escolha o efeito desejado (1 para Wahwah, 2 para Tremolo, 3 para Reverb): ');
 
-% Parâmetros do efeito Wahwah (exemplo)
-parametros = [0.5, 1]; % Frequência central e largura da banda de passagem
+% Definir os parâmetros de acordo com o efeito escolhido
+if escolha_efeito == 1
+    % Parâmetros do efeito Wahwah
+    parametros = [0.5, 900]; % Frequência central e largura da banda de passagem
+elseif escolha_efeito == 2
+    % Parâmetros do efeito Tremolo
+    parametros = [0.5, 1]; % Frequência central e largura da banda de passagem
+
+else
+    parametros = []; % Parâmetros vazios para Reverb
+end
 
 % Se o efeito escolhido for Reverb, solicitar impulso
 if escolha_efeito == 3
@@ -93,6 +102,25 @@ sinal_processado = aplicar_efeito(sinal, fa, escolha_efeito, parametros, impulso
 
 % Reproduzir o áudio processado
 sound(sinal_processado, fa);
+
+% Plotar gráficos dos sinais originais e processados
+figure;
+
+% Sinal original
+subplot(2, 1, 1);
+plot((1:length(sinal))/fa, sinal);
+title('Sinal Original');
+xlabel('Tempo (s)');
+ylabel('Amplitude');
+
+% Sinal processado
+subplot(2, 1, 2);
+plot((1:length(sinal_processado))/fa, sinal_processado);
+title('Sinal Processado');
+xlabel('Tempo (s)');
+ylabel('Amplitude');
+
+disp('Gráficos gerados com sucesso.');
 
 % Obter o nome do arquivo original sem a extensão
 [~, nome_arquivo, extensao] = fileparts(['audio' num2str(numero_audio) '.wav']);
