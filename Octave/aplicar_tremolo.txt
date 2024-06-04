@@ -6,6 +6,11 @@ function sinal_processado = aplicar_tremolo(sinal, fa, parametros)
 
     disp('Aplicando efeito Tremolo...'); % Mensagem de depuração
 
+    % Verificar se os parâmetros foram fornecidos corretamente
+    if length(parametros) < 2
+        error('Parâmetros insuficientes. Forneça a frequência e a profundidade do tremolo.');
+    end
+
     % Extrair os parâmetros fornecidos
     freq_tremolo = parametros(1);
     profundidade = parametros(2);
@@ -17,7 +22,10 @@ function sinal_processado = aplicar_tremolo(sinal, fa, parametros)
     % Aplicar a modulação ao sinal
     sinal_processado = sinal .* mod;
 
-    %Normalizar o sinal processado
-    sinal_processado=normalize(sinal_processado, 'range');
+    % Normalizar o sinal processado
+    sinal_processado = normalize(sinal_processado, 'range');
+
+    % Mensagem de depuração para confirmar o processamento
+    disp('Efeito Tremolo aplicado com sucesso.');
 end
 
