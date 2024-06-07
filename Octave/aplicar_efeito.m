@@ -1,14 +1,3 @@
-% Mini Projeto APS PL Data de Entrega:7/06/24
-% Eduardo Junqueira nº30241
-% Gonçalo Guimarães nº20456
-% -.------------------------------------------------------------
-% JPRJ-10 Processador de Efeitos de áudio: Wahwah, Tremolo e Reverb
-% -.------------------------------------------------------------
-
-% -.------------------------------------------------------------
-% Aplicar Efeito aqui é onde temos os 3 efeitos e o código desenvolvido para cada um deles  também temos as suas respetivas funções e parámetros
-% -.------------------------------------------------------------
-
 function sinal_processado = aplicar_efeito(sinal, fa, escolha, parametros, impulso)
   if isempty(parametros)
         parametros = [];
